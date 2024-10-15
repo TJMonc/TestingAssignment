@@ -4,7 +4,7 @@ import math
 ## filename received as a parameter
 def openFile(filename):
     try:
-        infile = open(filename, "r")
+        infile = open(str(filename), "r")
     except:
         print("File Name incorrect")
         return -1
@@ -13,13 +13,27 @@ def openFile(filename):
 ## takes two numbers and returns
 ## the result of a division
 def numbers(num1, num2):
+    try:
+        num1 = float(num1)
+        num2 = float(num2)
+        num1 / num2
+    except ZeroDivisionError:
+        print("You can't divide by 0")
+        return "Error"
+    except ValueError:
+        print("Numbers not entered")
+        return "Error"
     return num1 / num2
 
 ## takes in two points
 ## finds the distance between the points
 def dist(x1, y1, x2, y2):
-    dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
-    dist = math.sqrt(dist)
+    try:
+        dist = (float(x2) - float(x1)) ** 2 + (float(y2) - float(y1)) ** 2
+        dist = math.sqrt(dist)
+    except ValueError:
+        print("Numbers not entered")
+        return -1
 
     return dist
 
