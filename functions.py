@@ -4,7 +4,8 @@ import math
 ## filename received as a parameter
 def openFile(filename):
     try:
-        infile = open(str(filename), "r")
+        filename = str(filename)
+        infile = open(filename, "r")
     except:
         print("File Name incorrect")
         return -1
@@ -23,6 +24,9 @@ def numbers(num1, num2):
     except ValueError:
         print("Numbers not entered")
         return "Error"
+    except OverflowError:
+        print("Number Too Big")
+        return "Error"
     return num1 / num2
 
 ## takes in two points
@@ -34,7 +38,9 @@ def dist(x1, y1, x2, y2):
     except ValueError:
         print("Numbers not entered")
         return -1
-
+    except OverflowError:
+        print("Number Too Big")
+        return -1
     return dist
 
 ## takes in a string -- reverses it
@@ -44,7 +50,6 @@ def isPalindrome(temp):
 
     if(test == temp):
         return True
-
     else:
         return False
 
